@@ -17,17 +17,63 @@ There is a lack of a low-cost, flexible platform that transforms heterogeneous d
 ## Project Goal
 To build a working prototype of an integration and data-normalisation platform capable of transforming disparate health data formats into standardised FHIR resources, using Ghana-ready data workflows.
 
+Below are two complete Mermaid diagrams:
+- High-Level Architecture Diagram
+- End-to-End Sequence Diagram
+The two diagrams aim to provide a general overview and understanding of the components that can be utilised to facilitate the solution.
+
+```mermaid
+flowchart TD
+    subgraph ClinicSources["Simulated Ghanaian Health Facilities"]
+        A1["Regional Hospital (CSV/Excel)"]
+        A2["Private Clinic (JSON API)"]
+        A3["Pharmacy (JSON)"]
+        A4["Diagnostic Centre (HL7 ORU^R01)"]
+        A5["CHPS Compound (CSV)"]
+    end
+
+    subgraph Transport["Secure Transport Layer"]
+        B1["SFTP Drop Folder"]
+        B2["REST API Endpoint"]
+        B3["Local Watch Folder"]
+    end
+
+    subgraph Integration["Mirth Connect Integration Engine"]
+        C1["Inbound Channels"]
+        C2["Transformation & Mapping"]
+        C3["FHIR Conversion (Patient, Encounter, Observation, MedicationRequest)"]
+        C4["Validation & Error Handling"]
+    end
+
+    subgraph Storage["Unified Clinical Data Layer"]
+        D1["HAPI FHIR Server (Free/Open Source)"]
+        D2["Audit Logs / Error DB"]
+    end
+
+    subgraph Analytics["Optional Analytics & Viewing"]
+        E1["FHIR Viewer / Simple UI"]
+        E2["Reporting / Dashboards"]
+    end
+
+    %% Connections
+    ClinicSources --> Transport
+    Transport --> Integration
+    Integration --> Storage
+    Storage --> Analytics
+
+```
+
 ### Process Flow Sequence Diagram
 
-' mermaid
+```mermaid
 sequenceDiagram
     autonumber
 
-    participant Clinic as Clinic System (Simulated)
-    participant Transport as Transport Layer (SFTP/API/Folder)
-    participant Mirth as Mirth Connect
-    participant Mapper as Mapping & FHIR Normaliser
-    participant FHIR as HAPI FHIR Server
+    Participant Clinic as Clinic System (Simulated)
+    Participant Transport as Transport Layer (SFTP/API/Folder)
+    Participant Mirth as Mirth Connect
+    Participant Mapper as Mapping & FHIR Normaliser
+    Participant FHIR as HAPI FHIR Server
     participant Viewer as Analytics / Viewer
 
     Clinic->>Transport: Export patient data (CSV, JSON, HL7, Excel)
@@ -47,5 +93,19 @@ sequenceDiagram
 
     Viewer-->>FHIR: Request dashboard data
     FHIR-->>Viewer: Return normalised patient data
-    '
+```
+This diagram shows the exact student project workflow:
+- Generated simulated clinical data
+- Transport layer sends to Mirth
+- Mirth processes + routes messages
+- FHIR mapping + validation
+- Unified data stored in HAPI FHIR server
+The viewer consumes and displays normalised records.
 
+This architecture works well for a student project scenario for the following reasons :
+- You demonstrate fundamental ETL skills
+- You understand healthcare data structures and how they work
+- You build FHIR-like normalisation logic
+- You use SSIS + Python + PowerShell in a coordinated system ( in a scenario when you want to develop your own transformation engine without relying on Mirth Connect )
+- You simulate real clinics without needing real patient data
+- You can show dashboards, queries, or analytics on normalised data
