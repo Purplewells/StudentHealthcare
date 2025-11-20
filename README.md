@@ -24,7 +24,7 @@ The two diagrams aim to provide a general overview and understanding of the comp
 
 ```mermaid
 flowchart TD
-    subgraph ClinicSources["Simulated Ghanaian Health Facilities"]
+    subgraph ClinicSources["Simulated Health Facilities"]
         A1["Regional Hospital (CSV/Excel)"]
         A2["Private Clinic (JSON API)"]
         A3["Pharmacy (JSON)"]
@@ -46,11 +46,11 @@ flowchart TD
     end
 
     subgraph Storage["Unified Clinical Data Layer"]
-        D1["HAPI FHIR Server (Free/Open Source)"]
+        D1["HAPI FHIR Server (Open Source)"]
         D2["Audit Logs / Error DB"]
     end
 
-    subgraph Analytics["Optional Analytics & Viewing"]
+    subgraph Analytics["Analytics, Apps, Views"]
         E1["FHIR Viewer / Simple UI"]
         E2["Reporting / Dashboards"]
     end
@@ -102,10 +102,10 @@ This diagram shows the exact student project workflow:
 - Unified data stored in HAPI FHIR server
 The viewer consumes and displays normalised records.
 
-This architecture works well for a student project scenario for the following reasons :
-- You demonstrate fundamental ETL skills
-- You understand healthcare data structures and how they work
-- You build FHIR-like normalisation logic
-- You use SSIS + Python + PowerShell in a coordinated system ( in a scenario when you want to develop your own transformation engine without relying on Mirth Connect )
-- You simulate real clinics without needing real patient data
-- You can show dashboards, queries, or analytics on normalised data
+This architecture works well as a student project for the following reasons :
+- Allows us to demonstrate fundamental Extract, Transform, Load (ETL) skills
+- Allows the understanding of healthcare data structures and how they work
+- Facilitates the use of open source tools to build FHIR-like normalisation logic
+- We have the option to use our own developed engine, tapping into the use of native SSIS + Python + PowerShell in a coordinated system ( in a scenario when we want to establish our own transformation engine without relying on Mirth Connect )
+- We can simulate real clinics without needing real patient data
+- We can show dashboards, queries, or analytics on normalised data
