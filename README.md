@@ -38,7 +38,7 @@ flowchart TD
         B3["Local Watch Folder"]
     end
 
-    subgraph Integration["Mirth Connect Integration Engine"]
+    subgraph Integration["Mirth Integration Engine"]
         C1["Inbound Channels"]
         C2["Transformation & Mapping"]
         C3["FHIR Conversion (Patient, Encounter, Observation, MedicationRequest)"]
