@@ -8,14 +8,13 @@ This results in significant challenges:
 - Referral handovers between hospitals and clinics lack standardisation.
 - Analytics, disease surveillance, and continuity of care become difficult.
 
-With Ghana pursuing digital health transformation through the Ministry of Health (MoH), Ghana Health Service (GHS), and NHIS, the need to normalise and standardise health data is becoming central. A lightweight, open-source, standards-based platform is essential for practical interoperability across diverse clinical environments, particularly resource-constrained ones.
+With Ghana pursuing digital health transformation, the need to normalise and standardise health data is becoming central. A standards-based platform is essential for practical interoperability across diverse clinical environments where resources are constrained.
 
 ## Problem Statement
-Healthcare facilities in Ghana produce and store patient data in different formats and structures with no unified interoperability standard. This makes it challenging to share patient information across institutions or support national-level health analytics initiatives.
-There is a lack of a low-cost, flexible platform that transforms heterogeneous datasets into standardised Fast Healthcare Interoperability Resources (FHIR) based datasets.
+Healthcare facilities in Ghana produce and store patient data in different formats and structures with limited to no unified interoperability standard. This makes it challenging to share patient information across institutions or support national-level health analytics initiatives. There is a lack of a low-cost, flexible platform that transforms heterogeneous datasets into standardised Fast Healthcare Interoperability Resources (FHIR) based datasets.
 
 ## Project Goal
-To build a working prototype of an integration and data-normalisation platform capable of transforming disparate health data formats into standardised FHIR resources, using Ghana-ready data workflows.
+To build a working prototype of an integration and data-normalisation platform capable of transforming disparate health data formats into standardised FHIR resources, using synthetic data workflows.
 
 Below are two complete Mermaid diagrams:
 - High-Level Architecture Diagram
